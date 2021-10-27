@@ -12,6 +12,8 @@ Lucas Paulo Martins Mariz (2021037961) Frontend
 
 Marcelo Sartori Locatelli (2019006949) Backend
 
+Renan da Silva Moreira (2018020611) Backend
+
 ## Tecnologias
 - **Database**: SQL
 - **Backend**: NodeJS + Sequelize

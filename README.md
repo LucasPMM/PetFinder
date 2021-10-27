@@ -9,6 +9,7 @@ O sistema em questão será capaz de autenticar usuários e realizar o cadastro 
 
 ## Grupo
 Lucas Paulo Martins Mariz (2021037961) Frontend
+
 Marcelo Sartori Locatelli (2019006949) Backend
 
 ## Tecnologias

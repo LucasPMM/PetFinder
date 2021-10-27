@@ -1,0 +1,17 @@
+<div>
+  <h1>Dashboard</h1>
+
+  <div>
+    <form [formGroup]="petForm">
+      <label>Name:</label>
+      <input formControlName="name" placeholder="Pet name" required />
+      <button (click)="createPet()" type="submit">Create new pet</button>
+    </form>
+  </div>
+
+  <h2>Pets on database</h2>
+  <div *ngFor="let pet of pets">
+    <h5>{{ pet?.name }}</h5>
+  </div>
+  <button (click)="getPets()">Refresh</button>
+</div>

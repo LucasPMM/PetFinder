@@ -8,6 +8,8 @@ O objetivo desse projeto é apresentar uma proposta alternativa para que os dono
 O sistema em questão será capaz de autenticar usuários e realizar o cadastro de animais perdidos, além de permitir que sejam criados comentários nos posts para que informações acerca do paradeiro do animal sejam compartilhadas com o dono.
 
 ## Grupo
+João Pedro Ribeiro Junho (2019006787) Backend
+
 Lucas Paulo Martins Mariz (2021037961) Frontend
 
 Marcelo Sartori Locatelli (2019006949) Backend

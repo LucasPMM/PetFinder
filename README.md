@@ -43,7 +43,7 @@ Renan da Silva Moreira (2018020611) Backend
         - Telas de signin e signup
 
 2. Listagem de animais
-    - Backend:
+    - Backend(Marcelo):
         - Retornar a listagem de animais (GET)
         - Retornar os animais filtrados (nome, raça...) (GET)
         - Retornar os detelhes do animal (GET)

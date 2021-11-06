@@ -52,7 +52,7 @@ Renan da Silva Moreira (2018020611) Backend
         - Tela do detalhe do animal perdido
 
 3. Cadastro de animais
-    - Backend: (Lucas)
+    - Backend:
         - Cadastrar um animal no sistema (POST) 
         - Deletar um animal cadastrado no sistema (DELETE)
         - Editar um animal cadastrado no sistema (PUT)

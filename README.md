@@ -30,6 +30,7 @@ Renan da Silva Moreira (2018020611) Backend
 - Comentários nos posts dos animais perdidos
 
 ### Tarefas
+Quadro de tarfas: https://github.com/LucasPMM/PetFinder/projects
 
 0. Configuração (GRUPO)
     - Definição das tecnologias a serem utilizadas

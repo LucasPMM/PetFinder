@@ -10,7 +10,7 @@ O sistema em questão será capaz de autenticar usuários e realizar o cadastro 
 ## Grupo
 João Pedro Ribeiro Junho (2019006787) Backend
 
-Lucas Paulo Martins Mariz (2021037961) Frontend
+Lucas Paulo Martins Mariz (2021037961) Full stack
 
 Marcelo Sartori Locatelli (2019006949) Backend
 
@@ -20,3 +20,50 @@ Renan da Silva Moreira (2018020611) Backend
 - **Database**: SQL
 - **Backend**: NodeJS + Sequelize
 - **Frontend**: Angular
+
+## Sprint Planning
+
+### Histórias
+- Autenticação
+- Listagem de animais
+- Cadastro de animais
+- Comentários nos posts dos animais perdidos
+
+### Tarefas
+
+0. Configuração (GRUPO)
+    - Definição das tecnologias a serem utilizadas
+    - Estruturação base do framework do frontend
+    - Estruturação base da API a ser consumida pelo frontend
+
+1. Autenticação
+    - Backend:
+        - Criação e configuração do projeto no firebase para fornecer o CRUD de autenticação
+    - Frontend: (Lucas)
+        - Telas de signin e signup
+
+2. Listagem de animais
+    - Backend:
+        - Retornar a listagem de animais (GET)
+        - Retornar os animais filtrados (nome, raça...) (GET)
+        - Retornar os detelhes do animal (GET)
+    - Frontend: (Lucas)
+        - Dashboard da listagem de animais
+        - Tela do detalhe do animal perdido
+
+3. Cadastro de animais
+    - Backend: (Lucas)
+        - Cadastrar um animal no sistema (POST) 
+        - Deletar um animal cadastrado no sistema (DELETE)
+        - Editar um animal cadastrado no sistema (PUT)
+    - Frontend: (Lucas)
+        - Tela do formulário de cadastro de um animal
+        - Tela do formulário de edição de um animal
+        - Funcionalidade de deletar um animal cadastrado
+
+4. Comentários sobre os animais
+    - Backend:
+        - Criar um comentário (POST)
+        - Deletar um comentário comentário (DELETE)
+    - Frontend: (Lucas)
+        - Formulário de comentário na tela de detalhe do animal

@@ -38,22 +38,22 @@ Quadro de tarfas: https://github.com/LucasPMM/PetFinder/projects
     - Estruturação base da API a ser consumida pelo frontend
 
 1. Autenticação
-    - Backend:
-        - Criação e configuração do projeto no firebase para fornecer o CRUD de autenticação
+    - Backend: (Renan)
+        - Criação e configuração do projeto no firebase para fornecer o CRUD de 
     - Frontend: (Lucas)
         - Telas de signin e signup
 
 2. Listagem de animais
-    - Backend(Marcelo):
+    - Backend (Marcelo):
         - Retornar a listagem de animais (GET)
         - Retornar os animais filtrados (nome, raça...) (GET)
         - Retornar os detelhes do animal (GET)
-    - Frontend: (Lucas)
+    - Frontend: (João Pedro)
         - Dashboard da listagem de animais
         - Tela do detalhe do animal perdido
 
 3. Cadastro de animais
-    - Backend:
+    - Backend: (Renan)
         - Cadastrar um animal no sistema (POST) 
         - Deletar um animal cadastrado no sistema (DELETE)
         - Editar um animal cadastrado no sistema (PUT)
@@ -63,8 +63,8 @@ Quadro de tarfas: https://github.com/LucasPMM/PetFinder/projects
         - Funcionalidade de deletar um animal cadastrado
 
 4. Comentários sobre os animais
-    - Backend:
+    - Backend: (Marcelo)
         - Criar um comentário (POST)
         - Deletar um comentário comentário (DELETE)
-    - Frontend: (Lucas)
+    - Frontend: (João Pedro)
         - Formulário de comentário na tela de detalhe do animal

@@ -9,3 +9,5 @@
   - gender: genero do animal, uma enumeração ('m' ou 'f')
   - createdAt: quando foi criado, uma data.
   - updatedAt: quando foi atualizado, uma data.
+ 
+talvez adicionar um atributo com descrição de informações uteis para encontrar o pet.

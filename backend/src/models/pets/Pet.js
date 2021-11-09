@@ -1,6 +1,8 @@
 const Sequelize = require('sequelize');
 const db = require('../../config/pets/database');
 
+//modelo de um pet, talvez dono seja um atributo bom de se adicionar
+//ou talvez cor/cores
 const Pet=db.define('pet',{
     id:{
         type:Sequelize.INTEGER,

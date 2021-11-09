@@ -7,3 +7,5 @@
   - race: raça do pet(ex: pug), uma string
   - age: idade do pet, um inteiro
   - gender: genero do animal, uma enumeração ('m' ou 'f')
+  - createdAt: quando foi criado, uma data.
+  - updatedAt: quando foi atualizado, uma data.

@@ -16,3 +16,5 @@
   - pet_id: foreign key, aponta para pets.id
   - user_id: foreign key, aponta para o usuário que postou o comentário
   - content: o conteúdo do comentário
+  - createdAt: quando foi criado, uma data.
+  - updatedAt: quando foi atualizado, uma data.

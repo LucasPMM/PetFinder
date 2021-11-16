@@ -23,16 +23,16 @@ DROP TABLE IF EXISTS `comments`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `comments` (
-  `id` int NOT NULL,
-  `pet_id` int DEFAULT NULL,
+  `id` int NOT NULL AUTO_INCREMENT,
   `content` text,
+  `pet_id` int DEFAULT NULL,
   `user_id` int DEFAULT NULL,
   `createdAt` date DEFAULT NULL,
   `updatedAt` date DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `pet_id_idx` (`pet_id`),
   CONSTRAINT `pet_id` FOREIGN KEY (`pet_id`) REFERENCES `pets` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -41,7 +41,7 @@ CREATE TABLE `comments` (
 
 LOCK TABLES `comments` WRITE;
 /*!40000 ALTER TABLE `comments` DISABLE KEYS */;
-INSERT INTO `comments` VALUES (1,1,'Cão lindo',NULL,NULL,NULL),(2,1,'Vi num beco',NULL,NULL,NULL),(3,1,'Vi em 3 becos',NULL,NULL,NULL),(4,1,'Vi em 4 becos',NULL,NULL,NULL),(5,2,'Fufi',NULL,NULL,NULL),(6,2,'caramelo',NULL,NULL,NULL);
+INSERT INTO `comments` VALUES (1,'fufi',1,1,NULL,NULL),(2,'vi num beco',1,1,NULL,NULL),(3,'vi na rua',1,1,NULL,NULL),(4,'nunca vi',2,1,NULL,NULL),(5,'tava no ralo',2,1,NULL,NULL),(17,'vi ali ó',1,1,'2021-11-16','2021-11-16'),(18,'vi na disney ó',1,1,'2021-11-16','2021-11-16');
 /*!40000 ALTER TABLE `comments` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -53,7 +53,7 @@ DROP TABLE IF EXISTS `pets`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `pets` (
-  `id` int NOT NULL,
+  `id` int NOT NULL AUTO_INCREMENT,
   `name` varchar(45) DEFAULT NULL,
   `species` varchar(45) DEFAULT NULL,
   `race` varchar(45) DEFAULT NULL,
@@ -63,7 +63,7 @@ CREATE TABLE `pets` (
   `createdAt` date DEFAULT NULL,
   `updatedAt` date DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -85,4 +85,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-11-16 12:26:33
+-- Dump completed on 2021-11-16 14:12:36

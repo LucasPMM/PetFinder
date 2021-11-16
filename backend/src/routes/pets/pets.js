@@ -1,8 +1,10 @@
 const express = require('express');
 const router = express.Router();
 const db = require('../../config/pets/database');
-const Pet = require('../../models/pets/Pet');
+const models = require('../../models/index');
 
+const Pet=models.Pet;
+const Comment=models.Comment;
 //finds all pets that match the query
 //send them if exists and 404 if no pet is found
 //else, logs an error
@@ -21,20 +23,28 @@ router.get('/',(req,res)=>{
     .catch(err => console.log('Error: ',err));
 });
 
-//finds pets with specific ids and send them if found
+//finds pets with specific ids, and their respective comments, and send them if found
 //if not found, sends 404
 //if failed to connect to db/other error, logs an error
-router.get('/:id',(req,res)=>{
-    Pet.findByPk(parseInt(req.params.id))
-    .then(pets =>{
-        if (!pets)
-        {
-            res.status(404).send('404 not found');
-            return;
+router.get('/:id',async(req,res)=>{
+    const pets=await Pet.findByPk(parseInt(req.params.id))
+    if(!pets)
+    {
+        res.status(404).send('404 not found');
+        return;
+    }
+    var comments=await Comment.findAll({
+        where:{
+            pet_id:parseInt(req.params.id),
         }
+    });
+    if(!comments)
+    {
         res.send(pets);
-    })
-    .catch(err => console.log('Error: ',err));
+        return;
+    }
+    comments.unshift(pets);
+    res.send(comments);
 });
 
 module.exports = router;

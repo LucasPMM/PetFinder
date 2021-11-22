@@ -31,8 +31,8 @@ CREATE TABLE `comments` (
   `updatedAt` date DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `pet_id_idx` (`pet_id`),
-  CONSTRAINT `pet_id` FOREIGN KEY (`pet_id`) REFERENCES `pets` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  CONSTRAINT `pet_id` FOREIGN KEY (`pet_id`) REFERENCES `pets` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -41,7 +41,7 @@ CREATE TABLE `comments` (
 
 LOCK TABLES `comments` WRITE;
 /*!40000 ALTER TABLE `comments` DISABLE KEYS */;
-INSERT INTO `comments` VALUES (1,'fufi',1,1,NULL,NULL),(2,'vi num beco',1,1,NULL,NULL),(3,'vi na rua',1,1,NULL,NULL),(4,'nunca vi',2,1,NULL,NULL),(5,'tava no ralo',2,1,NULL,NULL),(17,'vi ali ó',1,1,'2021-11-16','2021-11-16'),(18,'vi na disney ó',1,1,'2021-11-16','2021-11-16');
+INSERT INTO `comments` VALUES (1,'fufi',1,1,NULL,NULL),(2,'vi num beco',1,1,NULL,NULL),(3,'vi na rua',1,1,NULL,NULL),(4,'nunca vi',2,1,NULL,NULL),(5,'tava no ralo',2,1,NULL,NULL),(17,'vi ali ó',1,1,'2021-11-16','2021-11-16'),(18,'eu existo sim!',1,1,'2021-11-16','2021-11-22');
 /*!40000 ALTER TABLE `comments` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -85,4 +85,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-11-16 14:12:36
+-- Dump completed on 2021-11-22  9:49:18

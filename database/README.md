@@ -7,7 +7,7 @@
   - specie: espécie do pet(ex: cachorro, gato), uma string
   - age: idade do pet, um inteiro
   - gender: genero do animal, uma enumeração ('m' ou 'f')
-  - description: descrição que pode ajudar a encontrar o pet
+  - description: descrição que pode ajudar a encontrar o pet, text
   - createdAt: quando foi criado, uma data.
   - updatedAt: quando foi atualizado, uma data.
 

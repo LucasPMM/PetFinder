@@ -8,6 +8,7 @@ interface PetsAttributes {
   specie: string
   age: number
   gender: string
+  description: string
 }
 export type PetsInput = Optional<PetsAttributes, 'id'>
 export type PetsOuput = Required<PetsAttributes>
@@ -18,6 +19,7 @@ class Pets extends Model<PetsAttributes, PetsInput> implements PetsAttributes {
   public specie!: string
   public age!: number
   public gender!: string
+  public description!: string
 }
 
 Pets.init(
@@ -37,6 +39,9 @@ Pets.init(
       type: DataTypes.INTEGER.UNSIGNED
     },
     gender: {
+      type: DataTypes.STRING
+    },
+    description:{
       type: DataTypes.STRING
     }
   },

@@ -1,10 +1,9 @@
+import Comments, { CommentsOuput } from '../../models/comments'
 import Pets, { PetsInput, PetsOuput } from '../../models/pets'
 import { ReqType, ResType } from '../types'
 
 const createDocument = async (payload: PetsInput): Promise<PetsOuput> => {
-  const data = { ...payload, id: Math.round(Date.now() / 1000) }
-  console.log('createDocument', data)
-  return Pets.create(data)
+  return Pets.create(payload)
 }
 
 const getAll = async (): Promise<PetsOuput[]> => {
@@ -13,6 +12,15 @@ const getAll = async (): Promise<PetsOuput[]> => {
 
 const getOne = async (id: number): Promise<PetsOuput> => {
   return Pets.findByPk<any>(id)
+}
+
+const getComments = async (id: string): Promise<CommentsOuput[]> => {
+  const comments = await Comments.findAll({
+    where: {
+      petId: parseInt(id)
+    }
+  })
+  return comments
 }
 
 const createPet = async (req: ReqType, res: ResType) => {
@@ -27,7 +35,6 @@ const createPet = async (req: ReqType, res: ResType) => {
       res.send(data)
     }
   } catch (err) {
-    console.log('olha o erro', err)
     res.status(400).send({
       message: `Something wrong happens! ${JSON.stringify(err)}`
     })
@@ -48,8 +55,10 @@ const getAllPets = async (req: ReqType, res: ResType) => {
 const getSpecificPet = async (req: ReqType, res: ResType) => {
   const id = (req?.params as any)?.id
   try {
-    const pet = await getOne(id)
-    res.send(pet)
+    const pet = (await getOne(id)) || {}
+    const comments = (await getComments(id)) || []
+    const obj = { ...pet, comments }
+    res.send(obj)
   } catch (err) {
     res.status(400).send({
       message: `Something wrong happens! ${JSON.stringify(err)}`

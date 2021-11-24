@@ -1,4 +1,5 @@
 import { DataTypes, Model, Optional } from 'sequelize'
+import Comments from '../comments'
 import sequelizeConnection from '../index'
 
 interface PetsAttributes {
@@ -33,10 +34,10 @@ Pets.init(
       type: DataTypes.STRING
     },
     age: {
-      type: DataTypes.NUMBER
+      type: DataTypes.INTEGER.UNSIGNED
     },
     gender: {
-      type: DataTypes.ENUM('M', 'F')
+      type: DataTypes.STRING
     }
   },
   {
@@ -45,6 +46,9 @@ Pets.init(
     paranoid: true
   }
 )
+
+Pets.hasMany(Comments, { foreignKey: 'petId', sourceKey: 'id' })
+Comments.belongsTo(Pets, { foreignKey: 'petId', targetKey: 'id' })
 
 Pets.sequelize?.sync({ alter: true })
 

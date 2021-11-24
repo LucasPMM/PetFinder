@@ -45,7 +45,7 @@ const updateComment = async (req: ReqType, res: ResType) => {
         message: 'Invalid fields!'
       })
     } else {
-      await Comments.update({ content }, { where: { id } })
+      await Comments.update(content, { where: { id } })
       res.status(200).send(`Success`)
     }
   } catch (err) {

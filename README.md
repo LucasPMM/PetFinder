@@ -69,3 +69,8 @@ Quadro de tarfas: https://github.com/LucasPMM/PetFinder/projects
         - Deletar um comentário comentário (DELETE)
     - Frontend: (João Pedro)
         - Formulário de comentário na tela de detalhe do animal
+
+5. Base de dados
+    -Pets (Marcelo)
+    -Comentários (Marcelo)
+    -Usuários(?)

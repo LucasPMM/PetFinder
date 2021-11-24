@@ -5,7 +5,7 @@ import sequelizeConnection from '../index'
 interface PetsAttributes {
   id: number
   name: string
-  specie: string
+  species: string
   age: number
   gender: string
   description: string
@@ -16,7 +16,7 @@ export type PetsOuput = Required<PetsAttributes>
 class Pets extends Model<PetsAttributes, PetsInput> implements PetsAttributes {
   public id!: number
   public name!: string
-  public specie!: string
+  public species!: string
   public age!: number
   public gender!: string
   public description!: string
@@ -32,7 +32,7 @@ Pets.init(
     name: {
       type: DataTypes.STRING
     },
-    specie: {
+    species: {
       type: DataTypes.STRING
     },
     age: {

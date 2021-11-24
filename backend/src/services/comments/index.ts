@@ -63,7 +63,7 @@ const deleteComment = async (req: ReqType, res: ResType) => {
         message: 'Invalid fields!'
       })
     } else {
-      await Comments.destroy({ where: { id } })
+      await Comments.destroy({ where: { id: Number(id) }, force: true })
       res.status(200).send(`Success`)
     }
   } catch (err) {

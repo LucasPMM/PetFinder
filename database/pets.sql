@@ -35,8 +35,7 @@ CREATE TABLE `comments` (
   CONSTRAINT `comments_ibfk_1` FOREIGN KEY (`petId`) REFERENCES `pets` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `comments_ibfk_2` FOREIGN KEY (`petId`) REFERENCES `pets` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `comments_ibfk_3` FOREIGN KEY (`petId`) REFERENCES `pets` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `comments_ibfk_4` FOREIGN KEY (`petId`) REFERENCES `pets` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `pet_id` FOREIGN KEY (`petId`) REFERENCES `pets` (`id`)
+  CONSTRAINT `comments_ibfk_4` FOREIGN KEY (`petId`) REFERENCES `pets` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -61,6 +60,7 @@ CREATE TABLE `pets` (
   `id` int unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(255) DEFAULT NULL,
   `species` varchar(255) DEFAULT NULL,
+  `breed` varchar(255) DEFAULT NULL,
   `age` int unsigned DEFAULT NULL,
   `gender` varchar(255) DEFAULT NULL,
   `description` varchar(255) DEFAULT NULL,
@@ -77,7 +77,7 @@ CREATE TABLE `pets` (
 
 LOCK TABLES `pets` WRITE;
 /*!40000 ALTER TABLE `pets` DISABLE KEYS */;
-INSERT INTO `pets` VALUES (1,'luke','dog',10,'m',NULL,'2021-11-24 00:00:00','2021-11-24 00:00:00',NULL),(2,'thor','dog',4,'m',NULL,'2021-11-24 00:00:00','2021-11-24 00:00:00',NULL),(3,'kate','cat',6,'f',NULL,'2021-11-24 00:00:00','2021-11-24 00:00:00',NULL),(4,'pinky','hamster',1,'f',NULL,'2021-11-24 00:00:00','2021-11-24 00:00:00',NULL),(5,'tom','cat',15,'m',NULL,'2021-11-24 00:00:00','2021-11-24 00:00:00',NULL);
+INSERT INTO `pets` VALUES (1,'luke','dog',NULL,10,'m',NULL,'2021-11-24 00:00:00','2021-11-24 00:00:00',NULL),(2,'thor','dog',NULL,4,'m',NULL,'2021-11-24 00:00:00','2021-11-24 00:00:00',NULL),(3,'kate','cat',NULL,6,'f',NULL,'2021-11-24 00:00:00','2021-11-24 00:00:00',NULL),(4,'pinky','hamster',NULL,1,'f',NULL,'2021-11-24 00:00:00','2021-11-24 00:00:00',NULL),(5,'tom','cat',NULL,15,'m',NULL,'2021-11-24 00:00:00','2021-11-24 00:00:00',NULL);
 /*!40000 ALTER TABLE `pets` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -90,4 +90,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-11-24 19:11:00
+-- Dump completed on 2021-11-24 20:01:51

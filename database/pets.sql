@@ -23,16 +23,21 @@ DROP TABLE IF EXISTS `comments`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `comments` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `content` text,
-  `pet_id` int DEFAULT NULL,
-  `user_id` int DEFAULT NULL,
-  `createdAt` date DEFAULT NULL,
-  `updatedAt` date DEFAULT NULL,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `content` varchar(255) DEFAULT NULL,
+  `petId` int unsigned DEFAULT NULL,
+  `userId` int unsigned DEFAULT NULL,
+  `createdAt` datetime NOT NULL,
+  `updatedAt` datetime NOT NULL,
+  `deletedAt` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
-  KEY `pet_id_idx` (`pet_id`),
-  CONSTRAINT `pet_id` FOREIGN KEY (`pet_id`) REFERENCES `pets` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  KEY `pet_id_idx` (`petId`),
+  CONSTRAINT `comments_ibfk_1` FOREIGN KEY (`petId`) REFERENCES `pets` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `comments_ibfk_2` FOREIGN KEY (`petId`) REFERENCES `pets` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `comments_ibfk_3` FOREIGN KEY (`petId`) REFERENCES `pets` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `comments_ibfk_4` FOREIGN KEY (`petId`) REFERENCES `pets` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `pet_id` FOREIGN KEY (`petId`) REFERENCES `pets` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -41,7 +46,7 @@ CREATE TABLE `comments` (
 
 LOCK TABLES `comments` WRITE;
 /*!40000 ALTER TABLE `comments` DISABLE KEYS */;
-INSERT INTO `comments` VALUES (1,'fufi',1,1,NULL,NULL),(2,'vi num beco',1,1,NULL,NULL),(3,'vi na rua',1,1,NULL,NULL),(4,'nunca vi',2,1,NULL,NULL),(5,'tava no ralo',2,1,NULL,NULL),(17,'vi ali ó',1,1,'2021-11-16','2021-11-16'),(18,'eu existo sim!',1,1,'2021-11-16','2021-11-22');
+INSERT INTO `comments` VALUES (2,'vi num beco',1,1,'2021-11-24 00:00:00','2021-11-24 00:00:00',NULL),(3,'vi na rua',1,1,'2021-11-24 00:00:00','2021-11-24 00:00:00',NULL),(4,'nunca vi',2,1,'2021-11-24 00:00:00','2021-11-24 00:00:00',NULL),(5,'tava no ralo',2,1,'2021-11-24 00:00:00','2021-11-24 00:00:00',NULL),(25,'eu existo!',1,1,'2021-11-24 00:00:00','2021-11-24 00:00:00',NULL);
 /*!40000 ALTER TABLE `comments` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -53,15 +58,15 @@ DROP TABLE IF EXISTS `pets`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `pets` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `name` varchar(45) DEFAULT NULL,
-  `species` varchar(45) DEFAULT NULL,
-  `race` varchar(45) DEFAULT NULL,
-  `age` int DEFAULT NULL,
-  `gender` enum('m','f') DEFAULT NULL,
-  `description` text,
-  `createdAt` date DEFAULT NULL,
-  `updatedAt` date DEFAULT NULL,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) DEFAULT NULL,
+  `species` varchar(255) DEFAULT NULL,
+  `age` int unsigned DEFAULT NULL,
+  `gender` varchar(255) DEFAULT NULL,
+  `description` varchar(255) DEFAULT NULL,
+  `createdAt` datetime NOT NULL,
+  `updatedAt` datetime NOT NULL,
+  `deletedAt` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -72,7 +77,7 @@ CREATE TABLE `pets` (
 
 LOCK TABLES `pets` WRITE;
 /*!40000 ALTER TABLE `pets` DISABLE KEYS */;
-INSERT INTO `pets` VALUES (1,'luke','dog','yorkshire',10,'m',NULL,NULL,NULL),(2,'thor','dog','golden retriever',4,'m',NULL,NULL,NULL),(3,'kate','cat','persa',6,'f',NULL,NULL,NULL),(4,'pinky','hamster','',1,'f',NULL,NULL,NULL),(5,'tom','cat','siamês',15,'m',NULL,NULL,NULL);
+INSERT INTO `pets` VALUES (1,'luke','dog',10,'m',NULL,'2021-11-24 00:00:00','2021-11-24 00:00:00',NULL),(2,'thor','dog',4,'m',NULL,'2021-11-24 00:00:00','2021-11-24 00:00:00',NULL),(3,'kate','cat',6,'f',NULL,'2021-11-24 00:00:00','2021-11-24 00:00:00',NULL),(4,'pinky','hamster',1,'f',NULL,'2021-11-24 00:00:00','2021-11-24 00:00:00',NULL),(5,'tom','cat',15,'m',NULL,'2021-11-24 00:00:00','2021-11-24 00:00:00',NULL);
 /*!40000 ALTER TABLE `pets` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -85,4 +90,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-11-22  9:49:18
+-- Dump completed on 2021-11-24 19:11:00

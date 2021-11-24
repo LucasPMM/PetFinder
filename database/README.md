@@ -4,7 +4,7 @@
 
   - id: chave primária, um inteiro
   - name: nome do pet, uma string
-  - specie: espécie do pet(ex: cachorro, gato), uma string
+  - species: espécie do pet(ex: cachorro, gato), uma string
   - age: idade do pet, um inteiro
   - gender: genero do animal, uma enumeração ('m' ou 'f')
   - description: descrição que pode ajudar a encontrar o pet, text

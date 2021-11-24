@@ -6,6 +6,7 @@ interface PetsAttributes {
   id: number
   name: string
   species: string
+  breed: string
   age: number
   gender: string
   description: string
@@ -17,6 +18,7 @@ class Pets extends Model<PetsAttributes, PetsInput> implements PetsAttributes {
   public id!: number
   public name!: string
   public species!: string
+  public breed!: string
   public age!: number
   public gender!: string
   public description!: string
@@ -33,6 +35,9 @@ Pets.init(
       type: DataTypes.STRING
     },
     species: {
+      type: DataTypes.STRING
+    },
+    breed: {
       type: DataTypes.STRING
     },
     age: {

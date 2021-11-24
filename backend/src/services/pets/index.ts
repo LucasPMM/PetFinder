@@ -11,6 +11,10 @@ const getAll = async (): Promise<PetsOuput[]> => {
   return Pets.findAll()
 }
 
+const getOne = async (id: number): Promise<PetsOuput> => {
+  return Pets.findByPk<any>(id)
+}
+
 const createPet = async (req: ReqType, res: ResType) => {
   try {
     const payload = req?.body
@@ -29,6 +33,7 @@ const createPet = async (req: ReqType, res: ResType) => {
     })
   }
 }
+
 const getAllPets = async (req: ReqType, res: ResType) => {
   try {
     const payload = await getAll()
@@ -40,4 +45,16 @@ const getAllPets = async (req: ReqType, res: ResType) => {
   }
 }
 
-export default { createPet, getAllPets }
+const getSpecificPet = async (req: ReqType, res: ResType) => {
+  const id = (req?.params as any)?.id
+  try {
+    const pet = await getOne(id)
+    res.send(pet)
+  } catch (err) {
+    res.status(400).send({
+      message: `Something wrong happens! ${JSON.stringify(err)}`
+    })
+  }
+}
+
+export default { createPet, getAllPets, getSpecificPet }

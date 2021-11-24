@@ -4,6 +4,9 @@ import sequelizeConnection from '../index'
 interface PetsAttributes {
   id: number
   name: string
+  specie: string
+  age: number
+  gender: string
 }
 export type PetsInput = Optional<PetsAttributes, 'id'>
 export type PetsOuput = Required<PetsAttributes>
@@ -11,6 +14,9 @@ export type PetsOuput = Required<PetsAttributes>
 class Pets extends Model<PetsAttributes, PetsInput> implements PetsAttributes {
   public id!: number
   public name!: string
+  public specie!: string
+  public age!: number
+  public gender!: string
 }
 
 Pets.init(
@@ -22,6 +28,15 @@ Pets.init(
     },
     name: {
       type: DataTypes.STRING
+    },
+    specie: {
+      type: DataTypes.STRING
+    },
+    age: {
+      type: DataTypes.NUMBER
+    },
+    gender: {
+      type: DataTypes.ENUM('M', 'F')
     }
   },
   {

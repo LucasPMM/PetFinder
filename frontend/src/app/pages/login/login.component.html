@@ -1,0 +1,64 @@
+<div class="authentication">
+  <div class="card-container">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+          <div class="card card-signin my-5">
+            <div class="card-body">
+              <h5 class="card-title text-center">Sign In</h5>
+              <form class="form-signin" [formGroup]="loginForm">
+                <div class="form-label-group">
+                  <label>Email</label>
+                  <input
+                    formControlName="email"
+                    type="email"
+                    placeholder="Email"
+                    id="inputEmail"
+                    class="form-control"
+                    required
+                    autofocus
+                  />
+                </div>
+
+                <div class="form-label-group">
+                  <label>Senha</label>
+                  <input
+                    formControlName="password"
+                    placeholder="Senha"
+                    type="password"
+                    id="inputPassword"
+                    class="form-control"
+                    required
+                  />
+                </div>
+
+                <button
+                  style="width: 100%; margin-bottom: 10px"
+                  class="btn btn-lg btn-primary btn-block text-uppercase"
+                  (click)="login()"
+                  type="submit"
+                >
+                  Sign in
+                </button>
+                <button
+                  style="width: 100%; margin-bottom: 10px"
+                  class="btn btn-lg btn-primary btn-block text-uppercase"
+                  [routerLink]="['/register']"
+                >
+                  Registrar
+                </button>
+                <button
+                  style="width: 100%; margin-bottom: 10px"
+                  class="btn btn-lg btn-secondary btn-block text-uppercase"
+                  [routerLink]="['/forgot-password']"
+                >
+                  Esqueci a senha
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

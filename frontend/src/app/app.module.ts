@@ -7,6 +7,7 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { HttpClient, HttpClientModule } from "@angular/common/http";
 import { RouterModule } from "@angular/router";
 import { ToasterModule } from "angular2-toaster";
+import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 
 // Firebase
 import { provideFirebaseApp, getApp, initializeApp } from "@angular/fire/app";
@@ -47,6 +48,7 @@ import { RegisterModule } from "./pages/register/register.module";
 import { AngularFireModule } from "@angular/fire/compat";
 import { AngularFireAuthModule } from "@angular/fire/compat/auth";
 import { ForgotPasswordModule } from "./pages/forgot-password/forgot-password.module";
+import { ComponentsModule } from "./components/components.module";
 
 @NgModule({
   declarations: [AppComponent],
@@ -74,11 +76,13 @@ import { ForgotPasswordModule } from "./pages/forgot-password/forgot-password.mo
     HttpClientModule,
     RouterModule.forChild(routes),
     ToasterModule.forRoot(),
-
+    FontAwesomeModule,
+    ComponentsModule,
     DashboardModule,
     LoginModule,
     RegisterModule,
     ForgotPasswordModule,
+    FontAwesomeModule,
   ],
   providers: [Storage, { provide: LOCALE_ID, useValue: "pt-BR" }],
   bootstrap: [AppComponent],

@@ -1,5 +1,4 @@
 import { Component, OnInit } from "@angular/core";
-import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { Store } from "@ngrx/store";
 import { PetService } from "src/app/services/pets/pets.service";
 import { logout } from "src/app/stores/auth/auth.actions";
@@ -12,36 +11,11 @@ import { AppState } from "src/app/stores/reducers";
   providers: [PetService],
 })
 export class DashboardComponent implements OnInit {
-  constructor(
-    private petService: PetService,
-    private fb: FormBuilder,
-    private store: Store<AppState>
-  ) {}
-
-  public petForm: FormGroup = this.fb.group({
-    name: ["", [Validators.required, Validators.minLength(3)]],
-  });
-
-  public pets: any[] = [];
-
-  public getPets = async () => {
-    try {
-      this.pets = await this.petService.getPets();
-    } catch (e) {
-      console.log("Something wrong happens!");
-    }
-  };
+  constructor(private store: Store<AppState>) {}
 
   public logout() {
     this.store.dispatch(logout({}));
   }
 
-  ngOnInit(): void {
-    this.getPets();
-  }
-
-  public createPet(): void {
-    const payload = this.petForm.value;
-    this.petService.createPet(payload);
-  }
+  ngOnInit(): void {}
 }

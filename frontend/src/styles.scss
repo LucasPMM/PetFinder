@@ -1,6 +1,21 @@
 /* You can add global styles to this file, and also import other style files */
 @import "node_modules/angular2-toaster/toaster";
 @import "~bootstrap/dist/css/bootstrap.min.css";
+@import "~bootstrap/dist/css/bootstrap.css";
+:root {
+  --color-primary: #222831;
+  --color-secondary: #393e46;
+  --color-tertiary: #00adb5;
+  --color-white: #eeeeee;
+}
+
+.margin-right {
+  margin-right: 10px !important;
+}
+
+.bars-gradient {
+  background: linear-gradient(to right, #00adb5) !important;
+}
 
 .authentication {
   :root {

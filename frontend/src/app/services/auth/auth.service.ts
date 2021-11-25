@@ -59,6 +59,10 @@ export class AuthService {
     return null;
   }
 
+  public async resetPassword({ email }): Promise<void> {
+    await this.auth.sendPasswordResetEmail(email);
+  }
+
   public async logout(): Promise<void> {
     this.ngZone.run(() => {
       this.ngZone.runOutsideAngular(() => {

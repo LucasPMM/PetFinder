@@ -32,7 +32,11 @@
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "node_modules/angular2-toaster/toaster.min.css"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/jquery/dist/jquery.min.js",
+              "node_modules/popper.js/dist/umd/popper.min.js",
+              "node_modules/bootstrap/dist/js/bootstrap.min.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -94,8 +98,16 @@
             "karmaConfig": "karma.conf.js",
             "inlineStyleLanguage": "scss",
             "assets": ["src/favicon.ico", "src/assets"],
-            "styles": ["src/styles.scss"],
-            "scripts": []
+            "styles": [
+              "src/styles.scss",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "node_modules/angular2-toaster/toaster.min.css"
+            ],
+            "scripts": [
+              "node_modules/jquery/dist/jquery.min.js",
+              "node_modules/popper.js/dist/umd/popper.min.js",
+              "node_modules/bootstrap/dist/js/bootstrap.min.js"
+            ]
           }
         }
       }

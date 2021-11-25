@@ -6,7 +6,13 @@ import { environment } from "../environments/environment";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { HttpClient, HttpClientModule } from "@angular/common/http";
 import { RouterModule } from "@angular/router";
+import { ToasterModule } from "angular2-toaster";
 
+// Firebase
+import { provideFirebaseApp, getApp, initializeApp } from "@angular/fire/app";
+import { getFirestore, provideFirestore } from "@angular/fire/firestore";
+
+// Translate
 import pt from "@angular/common/locales/pt";
 import { TranslateModule, TranslateLoader } from "@ngx-translate/core";
 import { TranslateHttpLoader } from "@ngx-translate/http-loader";
@@ -16,6 +22,7 @@ export function createTranslateLoader(http: HttpClient) {
 import { registerLocaleData } from "@angular/common";
 registerLocaleData(pt);
 
+// Redux:
 import { StoreModule, ActionReducer, MetaReducer } from "@ngrx/store";
 import { EffectsModule } from "@ngrx/effects";
 import { StoreDevtoolsModule } from "@ngrx/store-devtools";
@@ -33,11 +40,20 @@ export function localStorageSyncReducer(
 }
 const metaReducers: Array<MetaReducer<any, any>> = [localStorageSyncReducer];
 
+// Pages:
 import { DashboardModule } from "./pages/dashboard/dashboard.module";
+import { LoginModule } from "./pages/login/login.module";
+import { RegisterModule } from "./pages/register/register.module";
+import { AngularFireModule } from "@angular/fire/compat";
+import { AngularFireAuthModule } from "@angular/fire/compat/auth";
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideFirestore(() => getFirestore()),
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireAuthModule,
     StoreModule.forRoot(reducers, { metaReducers }),
     EffectsModule.forRoot(effects),
     StoreDevtoolsModule.instrument({
@@ -54,9 +70,13 @@ import { DashboardModule } from "./pages/dashboard/dashboard.module";
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-    DashboardModule,
     HttpClientModule,
     RouterModule.forChild(routes),
+    ToasterModule.forRoot(),
+
+    DashboardModule,
+    LoginModule,
+    RegisterModule,
   ],
   providers: [Storage, { provide: LOCALE_ID, useValue: "pt-BR" }],
   bootstrap: [AppComponent],

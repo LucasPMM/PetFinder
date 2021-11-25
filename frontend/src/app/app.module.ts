@@ -46,6 +46,7 @@ import { LoginModule } from "./pages/login/login.module";
 import { RegisterModule } from "./pages/register/register.module";
 import { AngularFireModule } from "@angular/fire/compat";
 import { AngularFireAuthModule } from "@angular/fire/compat/auth";
+import { ForgotPasswordModule } from "./pages/forgot-password/forgot-password.module";
 
 @NgModule({
   declarations: [AppComponent],
@@ -77,6 +78,7 @@ import { AngularFireAuthModule } from "@angular/fire/compat/auth";
     DashboardModule,
     LoginModule,
     RegisterModule,
+    ForgotPasswordModule,
   ],
   providers: [Storage, { provide: LOCALE_ID, useValue: "pt-BR" }],
   bootstrap: [AppComponent],

@@ -1,6 +1,9 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { Store } from "@ngrx/store";
 import { PetService } from "src/app/services/pets/pets.service";
+import { logout } from "src/app/stores/auth/auth.actions";
+import { AppState } from "src/app/stores/reducers";
 
 @Component({
   selector: "app-dashboard",
@@ -9,7 +12,11 @@ import { PetService } from "src/app/services/pets/pets.service";
   providers: [PetService],
 })
 export class DashboardComponent implements OnInit {
-  constructor(private petService: PetService, private fb: FormBuilder) {}
+  constructor(
+    private petService: PetService,
+    private fb: FormBuilder,
+    private store: Store<AppState>
+  ) {}
 
   public petForm: FormGroup = this.fb.group({
     name: ["", [Validators.required, Validators.minLength(3)]],
@@ -24,6 +31,10 @@ export class DashboardComponent implements OnInit {
       console.log("Something wrong happens!");
     }
   };
+
+  public logout() {
+    this.store.dispatch(logout({}));
+  }
 
   ngOnInit(): void {
     this.getPets();

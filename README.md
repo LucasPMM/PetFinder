@@ -71,9 +71,6 @@ Quadro de tarfas: https://github.com/LucasPMM/PetFinder/projects
         - Formulário de comentário na tela de detalhe do animal
 
 5. Base de dados
-
-    -Pets (Marcelo)
-    
-    -Comentários (Marcelo)
-    
-    -Usuários(?)
+    - Pets (Marcelo)
+    - Comentários (Marcelo)
+    - Usuários(?)

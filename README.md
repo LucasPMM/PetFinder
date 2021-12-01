@@ -65,6 +65,7 @@ Quadro de tarfas: https://github.com/LucasPMM/PetFinder/projects
 4. Comentários sobre os animais: "Como usuário, quero conseguir postar comentários sobre pets."
     - Backend: (Marcelo)
         - Criar um comentário (POST)
+        - Atualizar um comentário (PUT)
         - Exibir comentários sobre um animal (GET)
         - Deletar um comentário comentário (DELETE)
     - Frontend: (João Pedro)

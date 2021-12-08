@@ -31,7 +31,7 @@ export const routes: Routes = [
     canActivate: [LoggedGuard],
   },
   {
-    path: "pet-detail",
+    path: "pet-detail/:method",
     component: PetDetailComponent,
     canActivate: [UnloggedGuard],
   },

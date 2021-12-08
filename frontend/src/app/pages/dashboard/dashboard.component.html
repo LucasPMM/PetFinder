@@ -1,5 +1,5 @@
 <ng-container *ngFor="let pet of pets$ | async">
-  <button>
+  <button [routerLink]="['/pet-detail', pet?.id]">
     {{ pet?.id }}
   </button>
 </ng-container>

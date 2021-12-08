@@ -5,7 +5,7 @@ import { environment } from "src/environments/environment";
 @Injectable({
   providedIn: "root",
 })
-export class PetService {
+export class PetsService {
   constructor(private httpClient: HttpClient) {}
 
   public getPets(): Promise<any> {

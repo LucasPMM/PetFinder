@@ -1,8 +1,11 @@
 import { Component, OnInit } from "@angular/core";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
+import { Store } from "@ngrx/store";
 import { ToasterService } from "angular2-toaster";
 import { Credentials } from "src/app/models/auth";
 import { AuthService } from "src/app/services/auth/auth.service";
+import { loginCompleted } from "src/app/stores/auth/auth.actions";
+import { AppState } from "src/app/stores/reducers";
 
 @Component({
   selector: "app-register",
@@ -17,6 +20,7 @@ export class RegisterComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
+    private store: Store<AppState>,
     private toasterService: ToasterService,
     private authService: AuthService
   ) {}
@@ -24,7 +28,8 @@ export class RegisterComponent implements OnInit {
   public async register(): Promise<void> {
     try {
       const value = this.registerForm.value as Credentials;
-      const res = await this.authService.registerUser(value);
+      const user = await this.authService.registerUser(value);
+      this.store.dispatch(loginCompleted({ user }));
     } catch (e) {
       this.toasterService.pop(
         "error",

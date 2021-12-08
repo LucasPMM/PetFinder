@@ -19,7 +19,10 @@ export class PetDetailComponent implements OnInit {
   public method: "create" | "detail" | "update" = "create";
   public isOwner = false;
   public pet: PetItem = null;
+  public petImage = null;
+
   public petForm: FormGroup = this.formBuilder.group({
+    image: ["", [Validators.required]],
     name: ["", [Validators.required]],
     breed: ["", [Validators.required]],
     age: ["", [Validators.required]],
@@ -33,6 +36,17 @@ export class PetDetailComponent implements OnInit {
     private formBuilder: FormBuilder,
     private activatedRoute: ActivatedRoute
   ) {}
+
+  public onImageChanged(event: any) {
+    const file = event.target.files[0];
+    const reader = new FileReader();
+    reader.onload = (e: any) => {
+      const imageSrc = e.target.result;
+      this.petImage = imageSrc;
+      this.petForm.patchValue({ image: imageSrc });
+    };
+    reader.readAsDataURL(file);
+  }
 
   public editPet() {
     this.isOwner && (this.method = "update");

@@ -1,14 +1,10 @@
 <div class="container">
   <form class="form-signin" [formGroup]="petForm">
-    <div class="imageContainer">
-      <img
-        class="image"
-        src="./../../../assets/images/default-dog.png"
-        width="300"
-        height="300"
-      />
-    </div>
+    <input type="file" accept="image/*" (change)="onImageChanged($event)" />
 
+    <div class="imageContainer">
+      <img class="image" [src]="petImage | safeHtml" width="300" height="300" />
+    </div>
     <div class="row w-100 center">
       <div class="form-label-group petData">
         <label class="text">Nome</label>

@@ -35,7 +35,7 @@ export function localStorageSyncReducer(
   reducer: ActionReducer<any>
 ): ActionReducer<any> {
   return localStorageSync({
-    keys: [{ auth: ["loggedUser"] }],
+    keys: [{ auth: ["loggedUser"] }, { pets: ["petsList"] }],
     rehydrate: true,
   })(reducer);
 }

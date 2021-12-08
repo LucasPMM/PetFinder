@@ -35,7 +35,7 @@ export function localStorageSyncReducer(
   reducer: ActionReducer<any>
 ): ActionReducer<any> {
   return localStorageSync({
-    keys: [{ auth: ["loggedUser"] }],
+    keys: [{ auth: ["loggedUser"] }, { pets: ["petsList"] }],
     rehydrate: true,
   })(reducer);
 }
@@ -49,6 +49,7 @@ import { AngularFireModule } from "@angular/fire/compat";
 import { AngularFireAuthModule } from "@angular/fire/compat/auth";
 import { ForgotPasswordModule } from "./pages/forgot-password/forgot-password.module";
 import { ComponentsModule } from "./components/components.module";
+import { PetDetailModule } from "./pages/pet-detail/pet-detail.module";
 
 @NgModule({
   declarations: [AppComponent],
@@ -80,6 +81,7 @@ import { ComponentsModule } from "./components/components.module";
     ComponentsModule,
     DashboardModule,
     LoginModule,
+    PetDetailModule,
     RegisterModule,
     ForgotPasswordModule,
     FontAwesomeModule,

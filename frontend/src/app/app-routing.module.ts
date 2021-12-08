@@ -7,6 +7,7 @@ import { DashboardComponent } from "./pages/dashboard/dashboard.component";
 import { LoginComponent } from "./pages/login/login.component";
 import { RegisterComponent } from "./pages/register/register.component";
 import { ForgotPasswordComponent } from "./pages/forgot-password/forgot-password.component";
+import { PetDetailComponent } from "./pages/pet-detail/pet-detail.component";
 
 export const routes: Routes = [
   {
@@ -28,6 +29,11 @@ export const routes: Routes = [
     path: "forgot-password",
     component: ForgotPasswordComponent,
     canActivate: [LoggedGuard],
+  },
+  {
+    path: "pet-detail/:method",
+    component: PetDetailComponent,
+    canActivate: [UnloggedGuard],
   },
   {
     path: "dashboard",

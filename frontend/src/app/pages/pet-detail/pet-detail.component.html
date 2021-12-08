@@ -1,1 +1,80 @@
-<p style="font-size: 60px; margin-top: 8vh; margin-bottom: 70vh">PetDeatiil!</p>
+<div class="container">
+  <form class="form-signin" [formGroup]="petForm">
+    <div class="imageContainer">
+      <img
+        class="image"
+        src="./../../../assets/images/default-dog.png"
+        width="300"
+        height="300"
+      />
+    </div>
+
+    <div class="row w-100 center">
+      <div class="form-label-group petData">
+        <label class="text">Nome</label>
+        <input
+          formControlName="name"
+          placeholder="Nome"
+          class="form-control"
+          required
+          autofocus
+        />
+      </div>
+      <div class="form-label-group petData">
+        <label class="text">Raça</label>
+        <input
+          formControlName="breed"
+          placeholder="Raça"
+          class="form-control"
+          required
+          autofocus
+        />
+      </div>
+    </div>
+    <div class="row w-100 center">
+      <div class="form-label-group petInfo">
+        <label class="text">Idade</label>
+        <input
+          formControlName="age"
+          placeholder="Idade"
+          class="form-control"
+          required
+          autofocus
+        />
+      </div>
+      <div class="form-label-group petInfo">
+        <label class="text">Genero</label>
+        <input
+          formControlName="gender"
+          placeholder="Genero"
+          class="form-control"
+          required
+          autofocus
+        />
+      </div>
+      <div class="form-label-group petInfo">
+        <label class="text">Espécie</label>
+        <input
+          formControlName="species"
+          placeholder="Espécie"
+          class="form-control"
+          required
+          autofocus
+        />
+      </div>
+    </div>
+    <div class="row w-100 center">
+      <div class="form-label-group description">
+        <label class="text">Descrição</label>
+        <textarea
+          formControlName="description"
+          placeholder="Descrição"
+          class="form-control"
+          required
+          rows="10"
+          autofocus
+        ></textarea>
+      </div>
+    </div>
+  </form>
+</div>

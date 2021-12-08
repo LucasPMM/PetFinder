@@ -7,6 +7,7 @@ import { getAuthLoggedUser } from "src/app/stores/auth/auth.selectors";
 import { first } from "rxjs/operators";
 import { PetItem } from "src/app/models/pets";
 import { getPetsList } from "src/app/stores/pets/pets.selectors";
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 
 @Component({
   selector: "app-pet-detail",
@@ -18,9 +19,18 @@ export class PetDetailComponent implements OnInit {
   public method: "create" | "detail" | "update" = "create";
   public isOwner = false;
   public pet: PetItem = null;
+  public petForm: FormGroup = this.formBuilder.group({
+    name: ["", [Validators.required]],
+    breed: ["", [Validators.required]],
+    age: ["", [Validators.required]],
+    gender: ["", [Validators.required]],
+    species: ["", [Validators.required]],
+    description: ["", [Validators.required]],
+  });
 
   constructor(
     private store: Store<AppState>,
+    private formBuilder: FormBuilder,
     private activatedRoute: ActivatedRoute
   ) {}
 

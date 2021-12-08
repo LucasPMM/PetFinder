@@ -1,0 +1,41 @@
+.petData {
+  margin-right: 15px;
+  width: 47%;
+  flex: 1;
+}
+.petInfo {
+  flex: 1;
+  margin-top: 20px;
+  width: 31%;
+  margin-right: 15px;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  justify-content: space-around;
+}
+
+.text {
+  font-size: 14px;
+}
+
+.imageContainer {
+  display: flex;
+  align-items: center;
+  margin-bottom: 40px;
+  justify-content: center;
+}
+.image {
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.description {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  margin-top: 40px;
+}

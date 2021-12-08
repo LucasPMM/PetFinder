@@ -50,6 +50,7 @@ import { AngularFireAuthModule } from "@angular/fire/compat/auth";
 import { ForgotPasswordModule } from "./pages/forgot-password/forgot-password.module";
 import { ComponentsModule } from "./components/components.module";
 import { PetDetailModule } from "./pages/pet-detail/pet-detail.module";
+import { PipesModule } from "./pipes/pipes.module";
 
 @NgModule({
   declarations: [AppComponent],
@@ -81,6 +82,7 @@ import { PetDetailModule } from "./pages/pet-detail/pet-detail.module";
     ComponentsModule,
     DashboardModule,
     LoginModule,
+    PipesModule,
     PetDetailModule,
     RegisterModule,
     ForgotPasswordModule,

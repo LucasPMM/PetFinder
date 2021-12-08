@@ -5,6 +5,7 @@ import sequelizeConnection from '../index'
 interface PetsAttributes {
   id: number
   userEmail: string
+  image: string
   name: string
   species: string
   breed: string
@@ -19,6 +20,7 @@ class Pets extends Model<PetsAttributes, PetsInput> implements PetsAttributes {
   public id!: number
   public name!: string
   public userEmail!: string
+  public image!: string
   public species!: string
   public breed!: string
   public age!: number
@@ -32,6 +34,9 @@ Pets.init(
       type: DataTypes.INTEGER.UNSIGNED,
       autoIncrement: true,
       primaryKey: true
+    },
+    image: {
+      type: DataTypes.TEXT
     },
     userEmail: {
       type: DataTypes.STRING

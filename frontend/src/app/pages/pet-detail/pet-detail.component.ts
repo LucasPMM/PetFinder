@@ -8,6 +8,7 @@ import { first } from "rxjs/operators";
 import { PetItem } from "src/app/models/pets";
 import { getPetsList } from "src/app/stores/pets/pets.selectors";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { createPetRequested } from "src/app/stores/pets/pets.actions";
 
 @Component({
   selector: "app-pet-detail",
@@ -37,6 +38,21 @@ export class PetDetailComponent implements OnInit {
     private activatedRoute: ActivatedRoute
   ) {}
 
+  public async create() {
+    console.log(this.petForm.value);
+    if (this.petForm.valid) {
+      const loggedUser = await this.store
+        .select(getAuthLoggedUser)
+        .pipe(first())
+        .toPromise();
+      const payload = {
+        ...this.petForm.value,
+        userEmail: loggedUser?.email,
+      };
+      this.store.dispatch(createPetRequested({ payload }));
+    }
+  }
+
   public onImageChanged(event: any) {
     const file = event.target.files[0];
     const reader = new FileReader();
@@ -52,12 +68,23 @@ export class PetDetailComponent implements OnInit {
     this.isOwner && (this.method = "update");
   }
 
-  public savePet() {
+  public async savePet() {
     this.isOwner && (this.method = "detail");
-    // dispatch save
+    // dipatch save
   }
 
-  public defineMethod() {
+  public remove() {
+    // this.store.dispatch()
+  }
+
+  private loadData(data) {
+    this.petForm.patchValue({
+      ...data,
+    });
+    this.petImage = data?.image;
+  }
+
+  private defineMethod() {
     const param = this.activatedRoute.snapshot.paramMap.get("method");
     if (param === "create") {
       this.method = "create";
@@ -67,7 +94,7 @@ export class PetDetailComponent implements OnInit {
     }
   }
 
-  public async setIsOwner(petId: number) {
+  private async setIsOwner(petId: number) {
     const petsList = await this.store
       .select(getPetsList)
       .pipe(first())
@@ -79,6 +106,7 @@ export class PetDetailComponent implements OnInit {
       .pipe(first())
       .toPromise();
 
+    this.loadData(selectedPet);
     this.isOwner = loggedUser?.email === this.pet?.userEmail;
   }
 

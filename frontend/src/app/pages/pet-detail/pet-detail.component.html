@@ -1,6 +1,11 @@
 <div class="container">
   <form class="form-signin" [formGroup]="petForm">
-    <input type="file" accept="image/*" (change)="onImageChanged($event)" />
+    <input
+      *ngIf="method !== 'detail'"
+      type="file"
+      accept="image/*"
+      (change)="onImageChanged($event)"
+    />
 
     <div class="imageContainer">
       <img class="image" [src]="petImage | safeHtml" width="300" height="300" />
@@ -9,6 +14,7 @@
       <div class="form-label-group petData">
         <label class="text">Nome</label>
         <input
+          [attr.disabled]="method === 'detail' ? 'disabled' : null"
           formControlName="name"
           placeholder="Nome"
           class="form-control"
@@ -19,6 +25,7 @@
       <div class="form-label-group petData">
         <label class="text">Raça</label>
         <input
+          [attr.disabled]="method === 'detail' ? 'disabled' : null"
           formControlName="breed"
           placeholder="Raça"
           class="form-control"
@@ -31,8 +38,10 @@
       <div class="form-label-group petInfo">
         <label class="text">Idade</label>
         <input
+          [attr.disabled]="method === 'detail' ? 'disabled' : null"
           formControlName="age"
           placeholder="Idade"
+          type="number"
           class="form-control"
           required
           autofocus
@@ -40,17 +49,20 @@
       </div>
       <div class="form-label-group petInfo">
         <label class="text">Genero</label>
-        <input
-          formControlName="gender"
-          placeholder="Genero"
+        <select
+          [attr.disabled]="method === 'detail' ? 'disabled' : null"
           class="form-control"
-          required
-          autofocus
-        />
+          formControlName="gender"
+        >
+          <option value="" selected disabled hidden>Selecione</option>
+          <option value="m">Macho</option>
+          <option value="f">Femea</option>
+        </select>
       </div>
       <div class="form-label-group petInfo">
         <label class="text">Espécie</label>
         <input
+          [attr.disabled]="method === 'detail' ? 'disabled' : null"
           formControlName="species"
           placeholder="Espécie"
           class="form-control"
@@ -63,6 +75,7 @@
       <div class="form-label-group description">
         <label class="text">Descrição</label>
         <textarea
+          [attr.disabled]="method === 'detail' ? 'disabled' : null"
           formControlName="description"
           placeholder="Descrição"
           class="form-control"
@@ -72,5 +85,41 @@
         ></textarea>
       </div>
     </div>
+    <div *ngIf="method === 'create'" class="row w-100 center buttonContainer">
+      <button
+        (click)="create()"
+        class="btn btn-block btn-lg btn-secondary text-uppercase"
+      >
+        Criar
+      </button>
+    </div>
+    <div *ngIf="method === 'update'" class="row w-100 center buttonContainer">
+      <button
+        (click)="savePet()"
+        class="btn btn-block btn-lg btn-secondary text-uppercase"
+      >
+        Atualizar
+      </button>
+    </div>
+    <ng-container *ngIf="method === 'detail'">
+      <div class="detailsButtons" *ngIf="isOwner">
+        <div class="row center">
+          <button
+            (click)="remove()"
+            class="btn btn-block btn-lg btn-danger text-uppercase"
+          >
+            Remover
+          </button>
+        </div>
+        <div class="row center">
+          <button
+            (click)="editPet()"
+            class="btn btn-block btn-lg btn-secondary text-uppercase"
+          >
+            Editar
+          </button>
+        </div>
+      </div>
+    </ng-container>
   </form>
 </div>

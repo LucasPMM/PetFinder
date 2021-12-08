@@ -5,6 +5,8 @@ import { type } from "src/app/utils/functions";
 export const petsActionTypes = {
   petsRequested: type("[Pets] -Pets requested-"),
   petsCompleted: type("[Pets] -Pets completed-"),
+  createPetRequested: type("[Pets] -CreatePet requested-"),
+  createPetCompleted: type("[Pets] -CreatePet completed-"),
   error: type("[Pets] -Pets error-"),
 };
 
@@ -17,6 +19,15 @@ export const petsCompleted = createAction(
   props<{ petsList: PetItem[] }>()
 );
 
+export const createPetRequested = createAction(
+  petsActionTypes.createPetRequested,
+  props<{ payload: any }>()
+);
+export const createPetCompleted = createAction(
+  petsActionTypes.createPetCompleted,
+  props<any>()
+);
+
 export const petsError = createAction(
   petsActionTypes.error,
   props<{ error: any }>()
@@ -25,6 +36,8 @@ export const petsError = createAction(
 const all = union({
   petsRequested,
   petsCompleted,
+  createPetRequested,
+  createPetCompleted,
   petsError,
 });
 

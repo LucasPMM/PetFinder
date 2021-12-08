@@ -39,6 +39,29 @@ export class PetsEffects {
     { dispatch: false }
   );
 
+  createRequested$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(PetsActions.petsActionTypes.createPetRequested),
+      switchMap((action) => {
+        return from(this.petsService.createPet(action.payload)).pipe(
+          map(() => PetsActions.createPetCompleted({})),
+          catchError((error) => of(PetsActions.petsError({ error })))
+        );
+      })
+    )
+  );
+
+  createCompleted$ = createEffect(
+    () =>
+      this.actions$.pipe(
+        ofType(PetsActions.petsActionTypes.createPetCompleted),
+        tap(() => {
+          this.router.navigate(["/dashboard"]);
+        })
+      ),
+    { dispatch: false }
+  );
+
   petsError$ = createEffect(
     () =>
       this.actions$.pipe(

@@ -10,6 +10,14 @@ const reducer = createReducer(
     petsList,
     isLoading: false,
   })),
+  on(PetsActions.createPetRequested, (state) => ({
+    ...state,
+    isLoading: true,
+  })),
+  on(PetsActions.createPetCompleted, (state) => ({
+    ...state,
+    isLoading: false,
+  })),
   on(PetsActions.petsError, (state) => ({ ...state, isLoading: false }))
 );
 

@@ -8,5 +8,8 @@ router.post('/', (req, res) => petsService.createPet(req, res))
 router.get('/:id', (req, res) => {
   petsService.getSpecificPet(req, res)
 })
+router.put('/:id', (req, res) => {
+  petsService.updatePet(req, res)
+})
 
 export default router

@@ -11,5 +11,8 @@ router.get('/:id', (req, res) => {
 router.put('/:id', (req, res) => {
   petsService.updatePet(req, res)
 })
+router.delete('/:id', (req, res) => {
+  petsService.deletePet(req, res)
+})
 
 export default router

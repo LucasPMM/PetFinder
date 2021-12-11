@@ -66,4 +66,23 @@ const getSpecificPet = async (req: ReqType, res: ResType) => {
   }
 }
 
-export default { createPet, getAllPets, getSpecificPet }
+const updatePet = async (req: ReqType, res: ResType) => {
+  const id = (req?.params as any)?.id
+  const payload = req?.body
+  if (!payload) {
+    res.status(400).send({
+      message: 'Invalid fields!'
+    })
+  } else {
+    try {
+      const data = await Pets.update(payload, { where: {id} })
+      res.status(200).send(data)
+    } catch (err) {
+      res.status(400).send({
+        message: `Something wrong happens! ${JSON.stringify(err)}`
+      })
+    }
+  }
+}
+
+export default { createPet, getAllPets, getSpecificPet, updatePet }

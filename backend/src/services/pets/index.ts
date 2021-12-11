@@ -85,4 +85,16 @@ const updatePet = async (req: ReqType, res: ResType) => {
   }
 }
 
-export default { createPet, getAllPets, getSpecificPet, updatePet }
+const deletePet = async (req: ReqType, res: ResType) => {
+  const id = (req?.params as any)?.id
+  try {
+    const data = await Pets.destroy({ where: {id} })
+    res.status(200).send(data)
+  } catch (err) {
+    res.status(400).send({
+      message: `Something wrong happens! ${JSON.stringify(err)}`
+    })
+  }
+}
+
+export default { createPet, getAllPets, getSpecificPet, updatePet, deletePet }

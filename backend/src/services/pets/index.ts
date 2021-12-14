@@ -75,8 +75,8 @@ const updatePet = async (req: ReqType, res: ResType) => {
     })
   } else {
     try {
-      const data = await Pets.update(payload, { where: {id} })
-      res.status(200).send(data)
+      const data = await Pets.update(payload, { where: { id } })
+      res.send(data)
     } catch (err) {
       res.status(400).send({
         message: `Something wrong happens! ${JSON.stringify(err)}`
@@ -88,8 +88,8 @@ const updatePet = async (req: ReqType, res: ResType) => {
 const deletePet = async (req: ReqType, res: ResType) => {
   const id = (req?.params as any)?.id
   try {
-    const data = await Pets.destroy({ where: {id} })
-    res.status(200).send(data)
+    await Pets.destroy({ where: { id } })
+    res.send({})
   } catch (err) {
     res.status(400).send({
       message: `Something wrong happens! ${JSON.stringify(err)}`

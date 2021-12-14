@@ -2,7 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { Store } from "@ngrx/store";
 import { PetsService } from "src/app/services/pets/pets.service";
 import { AppState } from "src/app/stores/reducers";
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import { getAuthLoggedUser } from "src/app/stores/auth/auth.selectors";
 import { first } from "rxjs/operators";
 import { PetItem } from "src/app/models/pets";
@@ -39,8 +39,11 @@ export class PetDetailComponent implements OnInit {
   constructor(
     private store: Store<AppState>,
     private formBuilder: FormBuilder,
+    private router: Router,
     private activatedRoute: ActivatedRoute
-  ) {}
+  ) {
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+  }
 
   public async create() {
     console.log(this.petForm.value);

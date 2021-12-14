@@ -6,6 +6,7 @@ import * as PetsActions from "./pets.actions";
 import { Injectable } from "@angular/core";
 import { Router } from "@angular/router";
 import { PetsService } from "src/app/services/pets/pets.service";
+import { ToasterService } from "angular2-toaster";
 
 @Injectable()
 export class PetsEffects {
@@ -13,6 +14,7 @@ export class PetsEffects {
     private actions$: Actions<PetsActions.PetsActionsTypes>,
     private utilsService: UtilsService,
     private router: Router,
+    private toasterService: ToasterService,
     private petsService: PetsService
   ) {}
 
@@ -57,6 +59,31 @@ export class PetsEffects {
         ofType(PetsActions.petsActionTypes.createPetCompleted),
         tap(() => {
           this.router.navigate(["/dashboard"]);
+          this.toasterService.pop("success", "Pet criado!");
+        })
+      ),
+    { dispatch: false }
+  );
+
+  deleteRequested$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(PetsActions.petsActionTypes.deletePetRequested),
+      switchMap((action) => {
+        return from(this.petsService.deletePet(action?.id)).pipe(
+          map(() => PetsActions.deletePetCompleted({})),
+          catchError((error) => of(PetsActions.petsError({ error })))
+        );
+      })
+    )
+  );
+
+  deleteCompleted$ = createEffect(
+    () =>
+      this.actions$.pipe(
+        ofType(PetsActions.petsActionTypes.deletePetCompleted),
+        tap(() => {
+          this.router.navigate(["/dashboard"]);
+          this.toasterService.pop("success", "Pet deletado!");
         })
       ),
     { dispatch: false }

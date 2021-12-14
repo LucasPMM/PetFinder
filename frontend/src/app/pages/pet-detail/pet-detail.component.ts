@@ -8,7 +8,10 @@ import { first } from "rxjs/operators";
 import { PetItem } from "src/app/models/pets";
 import { getPetsList } from "src/app/stores/pets/pets.selectors";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { createPetRequested } from "src/app/stores/pets/pets.actions";
+import {
+  createPetRequested,
+  deletePetRequested,
+} from "src/app/stores/pets/pets.actions";
 
 @Component({
   selector: "app-pet-detail",
@@ -74,7 +77,7 @@ export class PetDetailComponent implements OnInit {
   }
 
   public remove() {
-    // this.store.dispatch()
+    this.store.dispatch(deletePetRequested({ id: this?.pet?.id }));
   }
 
   private loadData(data) {

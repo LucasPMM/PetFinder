@@ -4,6 +4,7 @@ import { PetDetailComponent } from "./pet-detail.component";
 import { RouterModule } from "@angular/router";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { PipesModule } from "src/app/pipes/pipes.module";
+import { ComponentsModule } from "src/app/components/components.module";
 
 @NgModule({
   declarations: [PetDetailComponent],
@@ -11,6 +12,7 @@ import { PipesModule } from "src/app/pipes/pipes.module";
   imports: [
     CommonModule,
     PipesModule,
+    ComponentsModule,
     RouterModule.forChild([]),
     FormsModule,
     ReactiveFormsModule,

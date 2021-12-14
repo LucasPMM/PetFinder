@@ -7,6 +7,8 @@ export const petsActionTypes = {
   petsCompleted: type("[Pets] -Pets completed-"),
   createPetRequested: type("[Pets] -CreatePet requested-"),
   createPetCompleted: type("[Pets] -CreatePet completed-"),
+  deletePetRequested: type("[Pets] -DeletePet requested-"),
+  deletePetCompleted: type("[Pets] -DeletePet completed-"),
   error: type("[Pets] -Pets error-"),
 };
 
@@ -28,6 +30,15 @@ export const createPetCompleted = createAction(
   props<any>()
 );
 
+export const deletePetRequested = createAction(
+  petsActionTypes.deletePetRequested,
+  props<{ id: number }>()
+);
+export const deletePetCompleted = createAction(
+  petsActionTypes.deletePetCompleted,
+  props<any>()
+);
+
 export const petsError = createAction(
   petsActionTypes.error,
   props<{ error: any }>()
@@ -38,6 +49,8 @@ const all = union({
   petsCompleted,
   createPetRequested,
   createPetCompleted,
+  deletePetRequested,
+  deletePetCompleted,
   petsError,
 });
 

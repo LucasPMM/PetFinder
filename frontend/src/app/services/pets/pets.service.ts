@@ -15,4 +15,8 @@ export class PetsService {
   public createPet(payload: any): Promise<any> {
     return this.httpClient.post(`${environment.url}/pets`, payload).toPromise();
   }
+
+  public deletePet(id: number): Promise<any> {
+    return this.httpClient.delete(`${environment.url}/pets/${id}`).toPromise();
+  }
 }

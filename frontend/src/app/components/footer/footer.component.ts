@@ -1,11 +1,4 @@
 import { Component, OnInit } from "@angular/core";
-import {
-  faGithub,
-  faFacebook,
-  faTwitter,
-  faGoogle,
-  faLinkedin,
-} from "@fortawesome/free-brands-svg-icons";
 
 @Component({
   selector: "app-footer",

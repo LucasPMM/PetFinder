@@ -19,4 +19,10 @@ export class PetsService {
   public deletePet(id: number): Promise<any> {
     return this.httpClient.delete(`${environment.url}/pets/${id}`).toPromise();
   }
+
+  public updatePet(id: number, payload: any): Promise<any> {
+    return this.httpClient
+      .put(`${environment.url}/pets/${id}`, payload)
+      .toPromise();
+  }
 }

@@ -89,6 +89,31 @@ export class PetsEffects {
     { dispatch: false }
   );
 
+  updateRequested$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(PetsActions.petsActionTypes.updatePetRequested),
+      switchMap((action) => {
+        return from(
+          this.petsService.updatePet(action?.id, action?.payload)
+        ).pipe(
+          map(() => PetsActions.updatePetCompleted({})),
+          catchError((error) => of(PetsActions.petsError({ error })))
+        );
+      })
+    )
+  );
+
+  updateCompleted$ = createEffect(
+    () =>
+      this.actions$.pipe(
+        ofType(PetsActions.petsActionTypes.updatePetCompleted),
+        tap(() => {
+          this.toasterService.pop("success", "Pet atualizado!");
+        })
+      ),
+    { dispatch: false }
+  );
+
   petsError$ = createEffect(
     () =>
       this.actions$.pipe(

@@ -11,6 +11,7 @@ import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import {
   createPetRequested,
   deletePetRequested,
+  updatePetRequested,
 } from "src/app/stores/pets/pets.actions";
 
 @Component({
@@ -73,7 +74,9 @@ export class PetDetailComponent implements OnInit {
 
   public async savePet() {
     this.isOwner && (this.method = "detail");
-    // dipatch save
+    this.store.dispatch(
+      updatePetRequested({ id: this.pet?.id, payload: this.petForm.value })
+    );
   }
 
   public remove() {

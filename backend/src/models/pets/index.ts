@@ -36,7 +36,7 @@ Pets.init(
       primaryKey: true
     },
     image: {
-      type: DataTypes.TEXT
+      type: DataTypes.TEXT({ length: 'long' })
     },
     userEmail: {
       type: DataTypes.STRING

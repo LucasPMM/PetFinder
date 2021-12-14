@@ -9,7 +9,7 @@ const app = express()
 
 sequelizeConnection.sync()
 app.use(cors({ origin: environment.origin }))
-app.use(bodyParser.json())
+app.use(bodyParser.json({ limit: '50mb' }))
 app.use(bodyParser.urlencoded({ extended: true }))
 
 app.use('/images', express.static(path.join(__dirname, 'images')))

@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 8.0.27, for Win64 (x86_64)
 --
--- Host: localhost    Database: pets
+-- Host: 127.0.0.1    Database: pets
 -- ------------------------------------------------------
 -- Server version	8.0.27
 
@@ -16,30 +16,6 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `comments`
---
-
-DROP TABLE IF EXISTS `comments`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `comments` (
-  `id` int unsigned NOT NULL AUTO_INCREMENT,
-  `content` varchar(255) DEFAULT NULL,
-  `petId` int unsigned DEFAULT NULL,
-  `userId` int unsigned DEFAULT NULL,
-  `createdAt` datetime NOT NULL,
-  `updatedAt` datetime NOT NULL,
-  `deletedAt` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `pet_id_idx` (`petId`),
-  CONSTRAINT `comments_ibfk_1` FOREIGN KEY (`petId`) REFERENCES `pets` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `comments_ibfk_2` FOREIGN KEY (`petId`) REFERENCES `pets` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `comments_ibfk_3` FOREIGN KEY (`petId`) REFERENCES `pets` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `comments_ibfk_4` FOREIGN KEY (`petId`) REFERENCES `pets` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
 -- Dumping data for table `comments`
 --
 
@@ -50,34 +26,12 @@ INSERT INTO `comments` VALUES (2,'vi num beco',1,1,'2021-11-24 00:00:00','2021-1
 UNLOCK TABLES;
 
 --
--- Table structure for table `pets`
---
-
-DROP TABLE IF EXISTS `pets`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `pets` (
-  `id` int unsigned NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) DEFAULT NULL,
-  `species` varchar(255) DEFAULT NULL,
-  `breed` varchar(255) DEFAULT NULL,
-  `age` int unsigned DEFAULT NULL,
-  `gender` varchar(255) DEFAULT NULL,
-  `description` varchar(255) DEFAULT NULL,
-  `createdAt` datetime NOT NULL,
-  `updatedAt` datetime NOT NULL,
-  `deletedAt` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
 -- Dumping data for table `pets`
 --
 
 LOCK TABLES `pets` WRITE;
 /*!40000 ALTER TABLE `pets` DISABLE KEYS */;
-INSERT INTO `pets` VALUES (1,'luke','dog',NULL,10,'m',NULL,'2021-11-24 00:00:00','2021-11-24 00:00:00',NULL),(2,'thor','dog',NULL,4,'m',NULL,'2021-11-24 00:00:00','2021-11-24 00:00:00',NULL),(3,'kate','cat',NULL,6,'f',NULL,'2021-11-24 00:00:00','2021-11-24 00:00:00',NULL),(4,'pinky','hamster',NULL,1,'f',NULL,'2021-11-24 00:00:00','2021-11-24 00:00:00',NULL),(5,'tom','cat',NULL,15,'m',NULL,'2021-11-24 00:00:00','2021-11-24 00:00:00',NULL);
+INSERT INTO `pets` VALUES (1,'luke','dog',NULL,10,'m',NULL,'2021-11-24 00:00:00','2021-11-24 00:00:00',NULL,NULL,NULL),(2,'thor','dog',NULL,4,'m',NULL,'2021-11-24 00:00:00','2021-11-24 00:00:00',NULL,NULL,NULL),(3,'kate','cat',NULL,6,'f',NULL,'2021-11-24 00:00:00','2021-11-24 00:00:00',NULL,NULL,NULL),(4,'pinky','hamster',NULL,1,'f',NULL,'2021-11-24 00:00:00','2021-11-24 00:00:00',NULL,NULL,NULL),(5,'tom','cat',NULL,15,'m',NULL,'2021-11-24 00:00:00','2021-11-24 00:00:00',NULL,NULL,NULL);
 /*!40000 ALTER TABLE `pets` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -90,4 +44,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-11-24 20:01:51
+-- Dump completed on 2022-01-10 12:41:29

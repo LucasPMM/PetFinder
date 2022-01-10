@@ -6,8 +6,8 @@ const createDocument = async (payload: PetsInput): Promise<PetsOuput> => {
   return Pets.create(payload)
 }
 
-const getAll = async (): Promise<PetsOuput[]> => {
-  return Pets.findAll()
+const getAll = async (req: ReqType, res: ResType): Promise<PetsOuput[]> => {
+  return Pets.findAll({where: req.query})
 }
 
 const getOne = async (id: number): Promise<PetsOuput> => {
@@ -43,7 +43,7 @@ const createPet = async (req: ReqType, res: ResType) => {
 
 const getAllPets = async (req: ReqType, res: ResType) => {
   try {
-    const payload = await getAll()
+    const payload = await getAll(req, res)
     res.send(payload)
   } catch (err) {
     res.status(400).send({

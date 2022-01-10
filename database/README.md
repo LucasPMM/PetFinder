@@ -3,7 +3,7 @@
 - ## Pets
 
   - id: chave primária, um inteiro
-  - userEmail: chave estrangeira para o dono do pet, text
+  - userEmail: chave estrangeira para o dono do pet, string
   - image: imagem do pet, long text
   - name: nome do pet, uma string
   - species: espécie do pet(ex: cachorro, gato), uma string

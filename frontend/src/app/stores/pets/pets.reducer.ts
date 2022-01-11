@@ -1,15 +1,22 @@
 import { createReducer, on, Action } from "@ngrx/store";
 import { petsEmptyState, PetsState } from "./pets.state";
 import * as PetsActions from "./pets.actions";
+import { clone } from "ramda";
 
 const reducer = createReducer(
   petsEmptyState,
   on(PetsActions.petsRequested, (state) => ({ ...state, isLoading: true })),
-  on(PetsActions.petsCompleted, (state, { petsList }) => ({
-    ...state,
-    petsList,
-    isLoading: false,
-  })),
+  on(PetsActions.petsCompleted, (state, { petsList }) => {
+    const list = clone(petsList || []);
+    return {
+      ...state,
+      petsList: list?.sort(
+        (a, b) =>
+          new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+      ),
+      isLoading: false,
+    };
+  }),
   on(PetsActions.createPetRequested, (state) => ({
     ...state,
     isLoading: true,

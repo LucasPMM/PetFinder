@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { Router } from "@angular/router";
 import { Store } from "@ngrx/store";
 import { Observable } from "rxjs";
 import { PetItem } from "src/app/models/pets";
@@ -14,12 +15,16 @@ import { AppState } from "src/app/stores/reducers";
   providers: [],
 })
 export class DashboardComponent implements OnInit {
-  constructor(private store: Store<AppState>) {}
+  constructor(private store: Store<AppState>, private router: Router) {}
 
   public pets$: Observable<PetItem[]>;
 
   public logout() {
     this.store.dispatch(logout({}));
+  }
+
+  public navigate(id) {
+    this.router.navigate([`/pet-detail/${id}`]);
   }
 
   public getPets() {

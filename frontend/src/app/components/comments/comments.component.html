@@ -1,1 +1,27 @@
 <h1>Comentários</h1>
+
+<div class="container">
+  <ng-container *ngFor="let comment of comments">
+    <div class="row w-100 center comment">
+      <label>{{ comment?.content }}</label>
+    </div>
+  </ng-container>
+</div>
+
+<div class="container">
+  <div class="row w-100 center">
+    <div class="form-label-group description">
+      <textarea
+        #commentContent
+        placeholder="Esceva um comentário"
+        class="form-control"
+        required
+        rows="2"
+        autofocus
+      ></textarea>
+      <button (click)="createComment()" class="btn btn-info">
+        Enviar comentário
+      </button>
+    </div>
+  </div>
+</div>

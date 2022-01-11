@@ -3,7 +3,7 @@ import { Dialect, Sequelize } from 'sequelize'
 const configs = {
   dbName: 'PetFinder',
   dbUser: 'root',
-  password: '', // Your password here
+  password: 'Avatar2121!!', // Your password here
 
   options: {
     host: 'localhost',

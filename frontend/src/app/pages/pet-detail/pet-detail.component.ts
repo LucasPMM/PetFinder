@@ -6,7 +6,6 @@ import { ActivatedRoute, Router } from "@angular/router";
 import { getAuthLoggedUser } from "src/app/stores/auth/auth.selectors";
 import { first } from "rxjs/operators";
 import { PetItem } from "src/app/models/pets";
-import { getPetsList } from "src/app/stores/pets/pets.selectors";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import {
   createPetRequested,
@@ -40,13 +39,13 @@ export class PetDetailComponent implements OnInit {
     private store: Store<AppState>,
     private formBuilder: FormBuilder,
     private router: Router,
+    private petsService: PetsService,
     private activatedRoute: ActivatedRoute
   ) {
     this.router.routeReuseStrategy.shouldReuseRoute = () => false;
   }
 
   public async create() {
-    console.log(this.petForm.value);
     if (this.petForm.valid) {
       const loggedUser = await this.store
         .select(getAuthLoggedUser)
@@ -104,18 +103,18 @@ export class PetDetailComponent implements OnInit {
   }
 
   private async setIsOwner(petId: number) {
-    const petsList = await this.store
-      .select(getPetsList)
-      .pipe(first())
-      .toPromise();
-    const selectedPet = petsList?.find((item) => item?.id === petId);
-    this.pet = selectedPet;
+    const pet = await this.petsService.getPet(petId);
+    const parsedPet = {
+      ...pet?.dataValues,
+      comments: pet?.comments,
+    };
+    this.pet = parsedPet;
     const loggedUser = await this.store
       .select(getAuthLoggedUser)
       .pipe(first())
       .toPromise();
 
-    this.loadData(selectedPet);
+    this.loadData(parsedPet);
     this.isOwner = loggedUser?.email === this.pet?.userEmail;
   }
 
@@ -123,8 +122,3 @@ export class PetDetailComponent implements OnInit {
     this.defineMethod();
   }
 }
-
-// TODO:
-// - show info if 'detail'
-// - show form if 'create'
-// - allow edit if 'edit'

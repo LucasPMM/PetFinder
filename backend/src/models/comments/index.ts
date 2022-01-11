@@ -4,7 +4,7 @@ import sequelizeConnection from '../index'
 interface CommentsAttributes {
   id: number
   petId: number
-  userId: number
+  userId: string
   content: string
 }
 export type CommentsInput = Optional<CommentsAttributes, 'id'>
@@ -16,7 +16,7 @@ class Comments
 {
   public id!: number
   public petId!: number
-  public userId!: number
+  public userId!: string
   public content!: string
 }
 
@@ -31,7 +31,7 @@ Comments.init(
       type: DataTypes.INTEGER.UNSIGNED
     },
     userId: {
-      type: DataTypes.INTEGER.UNSIGNED
+      type: DataTypes.STRING
     },
     content: {
       type: DataTypes.STRING

@@ -1,6 +1,12 @@
-<ng-container *ngFor="let pet of pets$ | async">
-  <button [routerLink]="['/pet-detail', pet?.id]">
-    {{ pet?.id }}
-  </button>
-</ng-container>
-<p style="font-size: 60px; margin-top: 8vh; margin-bottom: 70vh">Building!</p>
+<div class="container">
+  <div class="row">
+    <ng-container *ngFor="let pet of pets$ | async">
+      <div (click)="navigate(pet?.id)" class="card col-3">
+        <img class="image" [src]="pet?.image" />
+        <button [routerLink]="['/pet-detail', pet?.id]">
+          {{ pet?.name }}
+        </button>
+      </div>
+    </ng-container>
+  </div>
+</div>

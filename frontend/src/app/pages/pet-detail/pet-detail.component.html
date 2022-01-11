@@ -80,7 +80,7 @@
           placeholder="Descrição"
           class="form-control"
           required
-          rows="10"
+          rows="5"
           autofocus
         ></textarea>
       </div>
@@ -101,8 +101,8 @@
         Atualizar
       </button>
     </div>
-    <div class="comments">
-      <app-comments></app-comments>
+    <div *ngIf="method !== 'create' && !!pet" class="comments">
+      <app-comments [petId]="pet?.id" [comments]="pet?.comments"></app-comments>
     </div>
     <ng-container *ngIf="method === 'detail'">
       <div class="detailsButtons" *ngIf="isOwner">

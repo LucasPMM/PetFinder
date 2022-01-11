@@ -1,5 +1,6 @@
 export interface PetItem {
   age: number;
+  image: string;
   breed: string;
   userEmail: string;
   createdAt: string;

@@ -12,6 +12,10 @@ export class PetsService {
     return this.httpClient.get(`${environment.url}/pets`).toPromise();
   }
 
+  public getPet(id: number): Promise<any> {
+    return this.httpClient.get(`${environment.url}/pets/${id}`).toPromise();
+  }
+
   public createPet(payload: any): Promise<any> {
     return this.httpClient.post(`${environment.url}/pets`, payload).toPromise();
   }

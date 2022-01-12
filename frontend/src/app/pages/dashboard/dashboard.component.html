@@ -1,4 +1,26 @@
 <div class="container">
+  <div
+    style="
+      width: 70%;
+      margin-left: 15%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: row;
+    "
+    class="card"
+  >
+    <img
+      src="assets/images/logo.png"
+      width="30"
+      height="30"
+      class="d-inline-block align-top"
+      alt=""
+    />
+    <p style="text-align: center; margin-top: 12px; font-size: 32px">
+      Nos ajude a encontrar esses pets perdidos!
+    </p>
+  </div>
   <div class="row">
     <ng-container *ngFor="let pet of pets$ | async">
       <div (click)="navigate(pet?.id)" class="card col-3">

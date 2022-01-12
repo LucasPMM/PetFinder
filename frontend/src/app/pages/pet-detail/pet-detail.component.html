@@ -101,7 +101,7 @@
         Atualizar
       </button>
     </div>
-    <div *ngIf="method !== 'create' && !!pet" class="comments">
+    <div *ngIf="method === 'detail' && !!pet" class="comments">
       <app-comments [petId]="pet?.id" [comments]="pet?.comments"></app-comments>
     </div>
     <ng-container *ngIf="method === 'detail'">

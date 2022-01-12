@@ -2,8 +2,11 @@
 
 <div class="container">
   <ng-container *ngFor="let comment of comments">
-    <div class="row w-100 center comment">
-      <label>{{ comment?.content }}</label>
+    <div class="w-100 center comment">
+      <p>{{ comment?.content }}</p>
+      <i style="font-size: 12px"
+        >Por {{ comment?.userId }} - {{ comment?.createdAt | date }}</i
+      >
     </div>
   </ng-container>
 </div>
